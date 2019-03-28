@@ -1,0 +1,28 @@
+{
+    "name": "sagunkho/laracart",
+    "description": "A Shopping Cart package for Laravel.",
+    "keywords": [ "laravel", "shopping-cart", "shopping", "cart", "wishlist", "checkout", "orders", "order-history" ],
+    "type": "library",
+    "authors": [
+        {
+            "name": "Sagun Khosla",
+            "email": "sagunxp@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+		"psr-4": {
+			"SagunKho\\ShoppingCart\\": "src/"
+		}
+    },
+	"extra": {
+	    "laravel": {
+	        "providers": [
+	            "SagunKho\\ShoppingCart\\ShoppingCartServiceProvider"
+	        ],
+	        "aliases": {
+	            "ShoppingCart": "SagunKho\\ShoppingCart\\Facades\\ShoppingCartFacade"
+	        }
+	    }
+	}
+}
