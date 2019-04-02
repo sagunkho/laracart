@@ -3,6 +3,7 @@
 namespace SagunKho\Laracart\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\User;
 
 class Orders extends Model
 {
