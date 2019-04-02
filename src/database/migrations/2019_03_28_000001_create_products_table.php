@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductCategoriesTable extends Migration
+class CreateProductsTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -28,13 +28,24 @@ class CreateProductCategoriesTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('product_categories', function (Blueprint $table) {
+		Schema::create('products', function (Blueprint $table) {
 			$table->increments('id');
+			$table->integer('category_id')->unsigned();
 			$table->string('name');
 			$table->string('description');
+			$table->string('entity')->nullable()->default(null);
+			$table->integer('entity_id')->unsigned()->default(0);
+			$table->string('entity_data')->nullable()->default(null);
+			$table->string('image');
+			$table->enum('image_type', ['FILE', 'URL'])->default('FILE');
+			$table->float('price', 15, 4)->default(0.00);
+			$table->float('discount_rate', 15, 4)->default(0.00);
+			$table->float('rating', 15, 4)->default(0.00);
 
 			$table->timestamps();
 			$table->softDeletes();
+
+			$table->foreign('category_id')->references('id')->on('product_categories');
 		});
 	}
 
@@ -45,6 +56,6 @@ class CreateProductCategoriesTable extends Migration
 	 */
 	public function down()
 	{
-		$schema->dropIfExists('product_categories');
+		Schema::dropIfExists('products');
 	}
 }

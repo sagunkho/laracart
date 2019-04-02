@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrderItemsTable extends Migration
+class CreateOrdersTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -28,16 +28,17 @@ class CreateOrderItemsTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('order_items', function (Blueprint $table) {
-			$table->integer('order_id')->unsigned();
-			$table->integer('product_id')->unsigned();
-			$table->double('quantity', 25, 4);
+		Schema::create('orders', function (Blueprint $table) {
+			$table->increments('id');
+			$table->integer('user_id')->unsigned();
+			$table->string('order_id');
+			$table->enum('status', [ 'RECEIVED', 'PROCESSING', 'COMPLETED', 'CANCELLED' ])->default('RECEIVED');
+			$table->double('total', 25, 4);
 
 			$table->timestamps();
 			$table->softDeletes();
 
-			$table->foreign('order_id')->references('id')->on('orders');
-			$table->foreign('product_id')->references('id')->on('products');
+			$table->foreign('user_id')->references('id')->on('users');
 		});
 	}
 
@@ -48,6 +49,6 @@ class CreateOrderItemsTable extends Migration
 	 */
 	public function down()
 	{
-		$schema->dropIfExists('order_items');
+		Schema::dropIfExists('orders');
 	}
 }

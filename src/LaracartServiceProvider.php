@@ -14,7 +14,7 @@ class LaracartServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		/* Publish Migrations */
-		$this->loadMigrationsFrom(__DIR__ . '/database/migrations' => base_path('database/migrations'));
+		$this->loadMigrationsFrom(__DIR__ . '/database/migrations');
 
 		/* Cache Routes */
 		$this->loadRoutesFrom(__DIR__ . '/routes/web.php');

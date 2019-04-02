@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLopWalletsTable extends Migration
+class CreateLogWalletsTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -52,6 +52,6 @@ class CreateLopWalletsTable extends Migration
 	 */
 	public function down()
 	{
-		$schema->dropIfExists('log_wallets');
+		Schema::dropIfExists('log_wallets');
 	}
 }

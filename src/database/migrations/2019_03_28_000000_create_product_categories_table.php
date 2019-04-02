@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWalletsTable extends Migration
+class CreateProductCategoriesTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -28,15 +28,13 @@ class CreateWalletsTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('wallets', function (Blueprint $table) {
+		Schema::create('product_categories', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('user_id')->unsigned();
-			$table->double('balance', 25, 4);
+			$table->string('name');
+			$table->string('description');
 
 			$table->timestamps();
 			$table->softDeletes();
-
-			$table->foreign('user_id')->references('id')->on('users');
 		});
 	}
 
@@ -47,6 +45,6 @@ class CreateWalletsTable extends Migration
 	 */
 	public function down()
 	{
-		$schema->dropIfExists('wallets');
+		Schema::dropIfExists('product_categories');
 	}
 }

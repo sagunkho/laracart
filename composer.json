@@ -12,16 +12,16 @@
     "require": {},
     "autoload": {
 		"psr-4": {
-			"SagunKho\\ShoppingCart\\": "src/"
+			"SagunKho\\Laracart\\": "src/"
 		}
     },
 	"extra": {
 	    "laravel": {
 	        "providers": [
-	            "SagunKho\\ShoppingCart\\ShoppingCartServiceProvider"
+	            "SagunKho\\Laracart\\LaracartServiceProvider"
 	        ],
 	        "aliases": {
-	            "ShoppingCart": "SagunKho\\ShoppingCart\\Facades\\ShoppingCartFacade"
+	            "Laracart": "SagunKho\\Laracart\\Facades\\LaracartFacade"
 	        }
 	    }
 	}

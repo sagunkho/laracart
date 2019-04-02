@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductsTable extends Migration
+class CreateOrderItemsTable extends Migration
 {
 	/**
 	 * Run the migrations.
@@ -28,23 +28,17 @@ class CreateProductsTable extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('products', function (Blueprint $table) {
+		Schema::create('order_items', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('category_id')->unsigned();
-			$table->string('name');
-			$table->string('description');
-			$table->string('entity')->nullable()->default(null);
-			$table->integer('entity_id')->unsigned()->default(0);
-			$table->string('entity_data')->nullable()->default(null);
-			$table->string('image');
-			$table->enum('image_type', ['PATH', 'URL'])->default('PATH');
-			$table->float('discount_rate', 15, 4)->default(0.00);
-			$table->float('rating', 15, 4)->default(0.00);
+			$table->integer('order_id')->unsigned();
+			$table->integer('product_id')->unsigned();
+			$table->double('quantity', 25, 4);
 
 			$table->timestamps();
 			$table->softDeletes();
 
-			$table->foreign('category_id')->references('id')->on('product_categories');
+			$table->foreign('order_id')->references('id')->on('orders');
+			$table->foreign('product_id')->references('id')->on('products');
 		});
 	}
 
@@ -55,6 +49,6 @@ class CreateProductsTable extends Migration
 	 */
 	public function down()
 	{
-		$schema->dropIfExists('products');
+		Schema::dropIfExists('order_items');
 	}
 }

@@ -48,6 +48,6 @@ class CreateWishListTable extends Migration
 	 */
 	public function down()
 	{
-		$schema->dropIfExists('wish_list');
+		Schema::dropIfExists('wish_list');
 	}
 }
