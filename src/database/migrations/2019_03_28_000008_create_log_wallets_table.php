@@ -30,7 +30,7 @@ class CreateLogWalletsTable extends Migration
 	{
 		Schema::create('log_wallets', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('user_id')->unsigned();
+			$table->bigInteger('user_id')->unsigned();
 			$table->integer('wallet_id')->unsigned();
 			$table->double('balance', 25, 4);
 			$table->enum('transaction', ['DEBIT', 'CREDIT']);

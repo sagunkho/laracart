@@ -30,7 +30,7 @@ class CreateShoppingCartTable extends Migration
 	{
 		Schema::create('shopping_cart', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('user_id')->unsigned();
+			$table->bigInteger('user_id')->unsigned();
 			$table->integer('product_id')->unsigned();
 			$table->double('quantity', 25, 4);
 

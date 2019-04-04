@@ -30,7 +30,7 @@ class CreateOrdersTable extends Migration
 	{
 		Schema::create('orders', function (Blueprint $table) {
 			$table->increments('id');
-			$table->integer('user_id')->unsigned();
+			$table->bigInteger('user_id')->unsigned();
 			$table->string('order_id');
 			$table->enum('status', [ 'RECEIVED', 'PROCESSING', 'COMPLETED', 'CANCELLED' ])->default('RECEIVED');
 			$table->double('total', 25, 4);
