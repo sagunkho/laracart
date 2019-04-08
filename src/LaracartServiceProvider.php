@@ -16,10 +16,6 @@ class LaracartServiceProvider extends ServiceProvider
 		/* Publish Migrations */
 		$this->loadMigrationsFrom(__DIR__ . '/database/migrations');
 
-		/* Cache Routes */
-		$this->loadRoutesFrom(__DIR__ . '/routes/web.php');
-		$this->loadRoutesFrom(__DIR__ . '/routes/api.php');
-
 		$this->publishes([
 			__DIR__.'/../config/laracart.php' => config_path('laracart.php'),
 		], 'config');
